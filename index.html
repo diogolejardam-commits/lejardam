@@ -77,7 +77,7 @@ h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 400; letter-spac
 /* ============ NAV ============ */
 .nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  padding: 1rem var(--pad-x);
+  padding: 0.5rem var(--pad-x);
   display: flex; align-items: center; justify-content: space-between;
   transition: background 0.4s, backdrop-filter 0.4s, padding 0.4s;
 }
@@ -85,12 +85,12 @@ h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 400; letter-spac
   background: rgba(247, 242, 231, 0.92);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  padding-top: 0.75rem; padding-bottom: 0.75rem;
+  padding-top: 0.5rem; padding-bottom: 0.5rem;
   box-shadow: 0 1px 0 rgba(74,122,61,0.08);
 }
 .brand {
   display: flex; align-items: center;
-  height: 72px;
+  height: 110px;
   transition: all 0.4s;
 }
 .brand img {
@@ -99,11 +99,11 @@ h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 400; letter-spac
   filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3));
   transition: filter 0.4s;
 }
-.nav.scrolled .brand { height: 60px; }
+.nav.scrolled .brand { height: 80px; }
 .nav.scrolled .brand img { filter: none; }
 @media (max-width: 600px) {
-  .brand { height: 56px; }
-  .nav.scrolled .brand { height: 48px; }
+  .brand { height: 80px; }
+  .nav.scrolled .brand { height: 64px; }
 }
 
 .nav-links { display: flex; gap: 2.25rem; list-style: none; align-items: center; }
@@ -189,7 +189,7 @@ h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 400; letter-spac
 .hero-inner {
   max-width: var(--max-w); margin: 0 auto; width: 100%;
   display: grid; grid-template-columns: 1fr auto; gap: 3rem; align-items: end;
-  padding-top: 6rem; padding-bottom: 4rem;
+  padding-top: 8rem; padding-bottom: 4rem;
 }
 @media (max-width: 900px) { .hero-inner { grid-template-columns: 1fr; } }
 
@@ -700,7 +700,7 @@ footer {
 @media (max-width: 700px) { .footer-grid { grid-template-columns: 1fr; } }
 
 .footer-brand {
-  height: 95px;
+  height: 130px;
   margin-bottom: 1.5rem;
 }
 .footer-brand img {
