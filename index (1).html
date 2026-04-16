@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Motel Le Jardam — conforto, privacidade e sofisticação. 17 suítes exclusivas com categorias Luxo, Gran Luxo, Master Luxo, Hot e Soft." />
+<meta name="theme-color" content="#2d4a24" />
+<link rel="icon" type="image/jpeg" href="logo-lejardam.jpeg" />
+<link rel="apple-touch-icon" href="logo-lejardam.jpeg" />
+
+<!-- Open Graph / social share -->
+<meta property="og:title" content="Motel Le Jardam — Trindade/GO" />
+<meta property="og:description" content="17 suítes exclusivas com categorias Luxo, Gran Luxo, Master Luxo, Hot, Soft e Luxo Especial. Conforto, privacidade e sofisticação em Trindade/GO." />
+<meta property="og:image" content="logo-lejardam.jpeg" />
+<meta property="og:type" content="website" />
+<title>Le Jardam — Motel</title>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Playfair+Display:wght@400;500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ============ RESET & BASE ============ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--cream);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+/* ============ TOKENS ============ */
+:root {
+  --green-900: #1e3519;
+  --green-800: #2d4a24;
+  --green-700: #4a7a3d;
+  --green-600: #6b9b5a;
+  --gold:      #c9a961;
+  --gold-soft: #e0c78f;
+  --cream:     #f7f2e7;
+  --cream-2:   #ede5d1;
+  --ink:       #1a1a1a;
+  --ink-soft:  #4a4a4a;
+  --white:     #fffdf7;
+
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body:    'Cormorant Garamond', Georgia, serif;
+  --font-sans:    'Inter', system-ui, sans-serif;
+
+  --max-w: 1280px;
+  --pad-x: clamp(1.25rem, 4vw, 3rem);
+}
+
+/* ============ TYPOGRAPHY ============ */
+h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 400; letter-spacing: -0.01em; line-height: 1.15; }
+.eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.25rem;
+  display: inline-block;
+}
+.section-title { font-size: clamp(2rem, 4vw, 3.25rem); color: var(--green-900); margin-bottom: 1rem; }
+.section-sub   { font-size: 1.15rem; color: var(--ink-soft); max-width: 60ch; font-style: italic; }
+
+/* ============ NAV ============ */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 1.25rem var(--pad-x);
+  display: flex; align-items: center; justify-content: space-between;
+  transition: background 0.4s, backdrop-filter 0.4s, padding 0.4s;
+}
+.nav.scrolled {
+  background: rgba(247, 242, 231, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding-top: 0.9rem; padding-bottom: 0.9rem;
+  box-shadow: 0 1px 0 rgba(74,122,61,0.08);
+}
+.brand {
+  display: flex; align-items: center;
+  height: 48px;
+  transition: all 0.4s;
+}
+.brand img {
+  height: 100%; width: auto;
+  object-fit: contain;
+  /* Logo já vem sobre fundo preto — filtro sutil pra combinar com hero */
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3));
+  transition: filter 0.4s;
+}
+.nav.scrolled .brand { height: 42px; }
+.nav.scrolled .brand img { filter: none; }
+@media (max-width: 600px) {
+  .brand { height: 40px; }
+  .nav.scrolled .brand { height: 36px; }
+}
+
+.nav-links { display: flex; gap: 2.25rem; list-style: none; align-items: center; }
+.nav-links a {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--white);
+  transition: color 0.3s;
+  position: relative;
+}
+.nav.scrolled .nav-links a { color: var(--green-900); }
+.nav-links a::after {
+  content: ''; position: absolute; bottom: -6px; left: 0; width: 0; height: 1px;
+  background: var(--gold); transition: width 0.3s;
+}
+.nav-links a:hover::after { width: 100%; }
+
+.nav-cta {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 0.75rem 1.5rem;
+  border: 1px solid var(--gold);
+  color: var(--white);
+  transition: all 0.3s;
+}
+.nav.scrolled .nav-cta { color: var(--green-900); border-color: var(--green-800); }
+.nav-cta:hover { background: var(--gold); color: var(--green-900); border-color: var(--gold); }
+
+.menu-toggle { display: none; flex-direction: column; gap: 5px; padding: 0.5rem; }
+.menu-toggle span { width: 26px; height: 1.5px; background: var(--white); transition: all 0.3s; }
+.nav.scrolled .menu-toggle span { background: var(--green-900); }
+
+@media (max-width: 900px) {
+  .nav-links, .nav-cta { display: none; }
+  .menu-toggle { display: flex; }
+  .nav-links.open {
+    display: flex; flex-direction: column;
+    position: fixed; top: 0; right: 0; bottom: 0;
+    width: min(320px, 80vw);
+    background: var(--green-900);
+    padding: 6rem 2rem 2rem;
+    gap: 1.75rem;
+    box-shadow: -20px 0 60px rgba(0,0,0,0.3);
+  }
+  .nav-links.open a { color: var(--cream); font-size: 0.9rem; }
+  .nav-links.open a::after { background: var(--gold); }
+}
+
+/* ============ HERO ============ */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex; align-items: center;
+  padding: 0 var(--pad-x);
+  color: var(--white);
+  overflow: hidden;
+  isolation: isolate;
+}
+.hero::before {
+  content: ''; position: absolute; inset: 0; z-index: -2;
+  background:
+    radial-gradient(ellipse at 30% 40%, rgba(74,122,61,0.35), transparent 60%),
+    linear-gradient(135deg, #1e3519 0%, #2d4a24 50%, #1a2e14 100%);
+}
+/* Subtle leaf pattern overlay */
+.hero::after {
+  content: ''; position: absolute; inset: 0; z-index: -1;
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(201,169,97,0.06) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(201,169,97,0.04) 0%, transparent 50%);
+  pointer-events: none;
+}
+.hero-grain {
+  position: absolute; inset: 0; z-index: -1; opacity: 0.06; pointer-events: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence baseFrequency='0.9' numOctaves='2' seed='3'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.5 0'/></filter><rect width='200' height='200' filter='url(%23n)'/></svg>");
+  mix-blend-mode: overlay;
+}
+
+.hero-inner {
+  max-width: var(--max-w); margin: 0 auto; width: 100%;
+  display: grid; grid-template-columns: 1fr auto; gap: 3rem; align-items: end;
+  padding-top: 6rem; padding-bottom: 4rem;
+}
+@media (max-width: 900px) { .hero-inner { grid-template-columns: 1fr; } }
+
+.hero-mark {
+  font-family: var(--font-sans);
+  font-size: 0.72rem; letter-spacing: 0.4em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 2rem;
+  display: flex; align-items: center; gap: 1rem;
+  opacity: 0; animation: fadeUp 0.9s 0.2s forwards;
+}
+.hero-mark::before { content: ''; width: 40px; height: 1px; background: var(--gold); }
+
+.hero h1 {
+  font-size: clamp(3rem, 8vw, 6.5rem);
+  font-weight: 400;
+  line-height: 0.95;
+  margin-bottom: 2rem;
+  letter-spacing: -0.02em;
+}
+.hero h1 span {
+  display: block;
+  font-style: italic;
+  color: var(--gold-soft);
+  font-size: 0.75em;
+}
+.hero h1 .word { display: inline-block; opacity: 0; animation: fadeUp 0.9s forwards; }
+.hero h1 .word:nth-child(1) { animation-delay: 0.3s; }
+.hero h1 .word:nth-child(2) { animation-delay: 0.45s; }
+.hero h1 .word:nth-child(3) { animation-delay: 0.6s; }
+
+.hero-lead {
+  font-size: clamp(1.1rem, 1.6vw, 1.35rem);
+  max-width: 42ch;
+  color: rgba(255,253,247,0.85);
+  font-style: italic;
+  margin-bottom: 2.5rem;
+  opacity: 0; animation: fadeUp 0.9s 0.75s forwards;
+}
+
+.hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; opacity: 0; animation: fadeUp 0.9s 0.9s forwards; }
+.btn {
+  font-family: var(--font-sans);
+  font-size: 0.78rem; letter-spacing: 0.22em; text-transform: uppercase;
+  padding: 1.1rem 2.25rem;
+  transition: all 0.35s cubic-bezier(.2,.8,.2,1);
+  display: inline-flex; align-items: center; gap: 0.75rem;
+  white-space: nowrap;
+}
+.btn-primary { background: var(--gold); color: var(--green-900); }
+.btn-primary:hover { background: var(--white); transform: translateY(-2px); box-shadow: 0 20px 40px rgba(0,0,0,0.25); }
+.btn-ghost { border: 1px solid rgba(255,253,247,0.4); color: var(--white); }
+.btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+.hero-meta {
+  display: flex; flex-direction: column; gap: 1.5rem;
+  font-family: var(--font-sans);
+  font-size: 0.78rem; letter-spacing: 0.15em; text-transform: uppercase;
+  color: rgba(255,253,247,0.7);
+  opacity: 0; animation: fadeUp 0.9s 1.05s forwards;
+}
+.hero-meta .stat { display: flex; align-items: baseline; gap: 0.75rem; }
+.hero-meta .num {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  color: var(--gold);
+  font-style: italic;
+  letter-spacing: 0;
+  text-transform: none;
+}
+@media (max-width: 900px) { .hero-meta { flex-direction: row; flex-wrap: wrap; gap: 2rem; } }
+
+.scroll-indicator {
+  position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+  font-family: var(--font-sans); font-size: 0.68rem; letter-spacing: 0.3em;
+  text-transform: uppercase; color: rgba(255,253,247,0.5);
+  display: flex; flex-direction: column; align-items: center; gap: 0.75rem;
+  animation: fadeUp 0.9s 1.4s forwards; opacity: 0;
+}
+.scroll-indicator::after {
+  content: ''; width: 1px; height: 40px; background: rgba(255,253,247,0.4);
+  animation: scrollLine 2.5s ease-in-out infinite;
+}
+@keyframes scrollLine {
+  0% { transform: scaleY(0); transform-origin: top; }
+  50% { transform: scaleY(1); transform-origin: top; }
+  51% { transform: scaleY(1); transform-origin: bottom; }
+  100% { transform: scaleY(0); transform-origin: bottom; }
+}
+@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ============ SECTIONS ============ */
+section { padding: clamp(5rem, 10vw, 9rem) var(--pad-x); }
+.container { max-width: var(--max-w); margin: 0 auto; }
+.section-head { margin-bottom: 4rem; }
+
+/* ============ ABOUT ============ */
+.about { background: var(--cream); position: relative; overflow: hidden; }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 6vw, 6rem); align-items: center; }
+@media (max-width: 900px) { .about-grid { grid-template-columns: 1fr; } }
+
+.about-text p {
+  font-size: 1.2rem;
+  color: var(--ink-soft);
+  margin-bottom: 1.25rem;
+  line-height: 1.75;
+}
+.about-text p:first-of-type::first-letter {
+  font-family: var(--font-display);
+  font-size: 3.5rem;
+  float: left;
+  line-height: 0.85;
+  padding: 0.3rem 0.75rem 0 0;
+  color: var(--green-700);
+  font-style: italic;
+}
+
+.about-visual {
+  position: relative;
+  aspect-ratio: 4/5;
+  background:
+    linear-gradient(135deg, var(--green-800), var(--green-700));
+  overflow: hidden;
+}
+.about-visual::before {
+  content: ''; position: absolute; inset: 0;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(201,169,97,0.3), transparent 50%),
+    radial-gradient(circle at 70% 80%, rgba(107,155,90,0.4), transparent 50%);
+}
+.about-visual .mono {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  font-family: var(--font-display); font-style: italic;
+  font-size: clamp(5rem, 14vw, 10rem);
+  color: rgba(201,169,97,0.85);
+  letter-spacing: -0.05em;
+}
+.about-visual .badge {
+  position: absolute; bottom: 2rem; left: 2rem; right: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255,253,247,0.2);
+  display: flex; justify-content: space-between; align-items: center;
+  color: var(--cream);
+  font-family: var(--font-sans); font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+}
+
+/* ============ SUITES ============ */
+.suites { background: var(--green-900); color: var(--cream); }
+.suites .section-title { color: var(--white); }
+.suites .section-sub { color: rgba(247,242,231,0.75); }
+
+.cat-filter {
+  display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 3rem;
+  padding-bottom: 2rem; border-bottom: 1px solid rgba(201,169,97,0.2);
+}
+.cat-btn {
+  font-family: var(--font-sans); font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+  padding: 0.75rem 1.25rem; color: rgba(247,242,231,0.6);
+  border: 1px solid transparent; transition: all 0.3s;
+}
+.cat-btn:hover { color: var(--cream); }
+.cat-btn.active { color: var(--green-900); background: var(--gold); border-color: var(--gold); }
+
+.suites-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; }
+
+.suite-card {
+  position: relative;
+  aspect-ratio: 3/4;
+  overflow: hidden;
+  cursor: pointer;
+  background: var(--green-800);
+  transition: transform 0.5s cubic-bezier(.2,.8,.2,1);
+}
+.suite-card:hover { transform: translateY(-6px); }
+
+.suite-visual {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, var(--green-700), var(--green-900));
+  overflow: hidden;
+}
+.suite-visual::after {
+  content: ''; position: absolute; inset: 0;
+  background:
+    radial-gradient(circle at var(--x, 30%) var(--y, 30%), rgba(201,169,97,0.25), transparent 60%);
+  transition: opacity 0.5s;
+}
+
+.suite-card[data-cat="LUXO"]         .suite-visual { background: linear-gradient(135deg, #3d6632, #1e3519); }
+.suite-card[data-cat="LUXO ESPECIAL"].suite-visual { background: linear-gradient(135deg, #4a7a3d, #2d4a24); }
+.suite-card[data-cat="GRAN LUXO"]    .suite-visual { background: linear-gradient(135deg, #5b8c49, #2d4a24); }
+.suite-card[data-cat="MASTER LUXO"]  .suite-visual { background: linear-gradient(160deg, #1e3519, #0f1c0b); }
+.suite-card[data-cat="HOT"]          .suite-visual { background: linear-gradient(135deg, #8b2e2e, #4a1515); }
+.suite-card[data-cat="SOFT"]         .suite-visual { background: linear-gradient(135deg, #6b9b5a, #3d6632); }
+
+.suite-icon {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -60%);
+  font-family: var(--font-display); font-style: italic;
+  font-size: 7rem; color: rgba(201,169,97,0.35); letter-spacing: -0.05em;
+  transition: transform 0.6s cubic-bezier(.2,.8,.2,1);
+}
+.suite-card:hover .suite-icon { transform: translate(-50%, -60%) scale(1.15); color: rgba(201,169,97,0.55); }
+
+.suite-info {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 2rem 1.75rem 1.75rem;
+  background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 70%, transparent 100%);
+}
+.suite-cat {
+  font-family: var(--font-sans); font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 0.5rem;
+}
+.suite-name {
+  font-family: var(--font-display); font-size: 1.5rem; color: var(--white);
+  margin-bottom: 0.75rem;
+}
+.suite-features {
+  display: flex; gap: 0.5rem; flex-wrap: wrap;
+  font-family: var(--font-sans); font-size: 0.7rem; letter-spacing: 0.05em;
+  color: rgba(255,253,247,0.75);
+}
+.suite-features span::after { content: '·'; margin: 0 0.35rem; color: var(--gold); }
+.suite-features span:last-child::after { display: none; }
+
+.suite-number {
+  position: absolute; top: 1.25rem; right: 1.25rem;
+  font-family: var(--font-display); font-size: 1.1rem; color: var(--gold-soft);
+  letter-spacing: 0.05em;
+}
+
+/* ============ AMENITIES ============ */
+.amenities { background: var(--cream); }
+.amenities-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1px; background: rgba(74,122,61,0.15);
+  border: 1px solid rgba(74,122,61,0.15);
+}
+.amenity {
+  background: var(--cream);
+  padding: 2.5rem 1.75rem;
+  transition: background 0.3s;
+}
+.amenity:hover { background: var(--cream-2); }
+.amenity-icon {
+  width: 48px; height: 48px; margin-bottom: 1.5rem;
+  color: var(--green-700);
+}
+.amenity h3 {
+  font-size: 1.35rem; color: var(--green-900); margin-bottom: 0.5rem;
+}
+.amenity p {
+  font-size: 1rem; color: var(--ink-soft); line-height: 1.5;
+}
+
+/* ============ TARIFAS ============ */
+.tarifas { background: var(--cream-2); position: relative; overflow: hidden; }
+.tarifas::before {
+  content: ''; position: absolute; top: 0; right: -100px; width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(74,122,61,0.08), transparent 70%);
+  pointer-events: none;
+}
+
+.tarif-toggle {
+  display: inline-flex;
+  background: var(--white);
+  padding: 0.4rem;
+  border-radius: 2px;
+  margin-bottom: 2.5rem;
+  border: 1px solid rgba(74,122,61,0.15);
+  box-shadow: 0 2px 12px rgba(30,53,25,0.06);
+}
+.tarif-tab {
+  font-family: var(--font-sans);
+  font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase;
+  padding: 0.85rem 1.75rem;
+  color: var(--ink-soft);
+  transition: all 0.35s cubic-bezier(.2,.8,.2,1);
+}
+.tarif-tab.active {
+  background: var(--green-800);
+  color: var(--cream);
+}
+.tarif-tab:not(.active):hover { color: var(--green-800); }
+@media (max-width: 600px) {
+  .tarif-toggle { width: 100%; }
+  .tarif-tab { flex: 1; padding: 0.85rem 0.75rem; font-size: 0.68rem; }
+}
+
+.tarif-table-wrap {
+  overflow-x: auto;
+  background: var(--white);
+  border: 1px solid rgba(74,122,61,0.1);
+  box-shadow: 0 4px 24px rgba(30,53,25,0.06);
+}
+.tarif-table-wrap[hidden] { display: none; }
+
+.tarif-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-body);
+}
+
+.tarif-table thead { background: var(--green-800); }
+.tarif-table th {
+  font-family: var(--font-sans);
+  font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--gold);
+  padding: 1.25rem 1.5rem;
+  text-align: left;
+  font-weight: 400;
+  white-space: nowrap;
+}
+.tarif-table th:first-child { padding-left: 2rem; }
+.tarif-table th:not(:first-child) { text-align: center; }
+
+.tarif-table tbody tr {
+  border-bottom: 1px solid rgba(74,122,61,0.08);
+  transition: background 0.25s;
+}
+.tarif-table tbody tr:last-child { border-bottom: none; }
+.tarif-table tbody tr:hover { background: var(--cream); }
+
+.tarif-table td {
+  padding: 1.35rem 1.5rem;
+  font-size: 1.15rem;
+  color: var(--ink);
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.01em;
+}
+.tarif-table td:first-child { text-align: left; padding-left: 2rem; }
+
+.cat-tag {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  color: var(--green-900);
+  letter-spacing: -0.005em;
+}
+
+.tarif-table tr.is-featured { background: linear-gradient(90deg, rgba(201,169,97,0.08), transparent); }
+.tarif-table tr.is-featured td { color: var(--green-900); font-weight: 500; }
+.tarif-table tr.is-featured .cat-tag {
+  color: var(--green-800);
+  position: relative;
+  padding-left: 1.25rem;
+}
+.tarif-table tr.is-featured .cat-tag::before {
+  content: '★';
+  position: absolute; left: 0; top: 50%; transform: translateY(-50%);
+  color: var(--gold); font-size: 0.9rem;
+}
+
+.tarif-footnote {
+  margin-top: 1.75rem;
+  font-size: 0.95rem;
+  font-style: italic;
+  color: var(--ink-soft);
+  text-align: center;
+}
+.tarif-footnote span { color: var(--gold); margin-right: 0.5rem; }
+
+/* Mobile: tabela vira cards empilhados */
+@media (max-width: 700px) {
+  .tarif-table thead { display: none; }
+  .tarif-table, .tarif-table tbody, .tarif-table tr, .tarif-table td { display: block; width: 100%; }
+  .tarif-table tbody tr {
+    padding: 1.25rem 1.25rem 1rem;
+    border-bottom: 1px solid rgba(74,122,61,0.12);
+  }
+  .tarif-table td {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding: 0.4rem 0;
+    text-align: right;
+    font-size: 1rem;
+  }
+  .tarif-table td:first-child {
+    padding: 0 0 0.75rem;
+    border-bottom: 1px solid rgba(74,122,61,0.1);
+    margin-bottom: 0.5rem;
+  }
+  .tarif-table td:not(:first-child)::before {
+    content: attr(data-label);
+    font-family: var(--font-sans);
+    font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 400;
+  }
+}
+
+/* ============ RESERVE ============ */
+.reserve {
+  background: var(--green-900);
+  color: var(--cream);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.reserve::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at center, rgba(201,169,97,0.1), transparent 60%);
+  pointer-events: none;
+}
+.reserve .container { position: relative; max-width: 700px; }
+.reserve .section-title { color: var(--white); }
+.reserve .eyebrow { color: var(--gold); }
+.reserve p {
+  font-size: 1.25rem;
+  color: rgba(247,242,231,0.8);
+  font-style: italic;
+  margin-bottom: 2.5rem;
+  max-width: 52ch; margin-left: auto; margin-right: auto;
+}
+
+/* ============ LOCATION ============ */
+.location { background: var(--cream-2); }
+.location-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+@media (max-width: 900px) { .location-grid { grid-template-columns: 1fr; gap: 2rem; } }
+
+.location-info dl { display: grid; gap: 2rem; margin-top: 2rem; }
+.location-info dt {
+  font-family: var(--font-sans); font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 0.5rem;
+}
+.location-info dd {
+  font-family: var(--font-display); font-size: 1.3rem; color: var(--green-900); line-height: 1.4;
+}
+.location-info dd small { display: block; font-family: var(--font-body); font-size: 1rem; color: var(--ink-soft); font-style: italic; margin-top: 0.25rem; }
+
+.hours-list { list-style: none; display: grid; gap: 0.5rem; }
+.hours-list li {
+  display: flex; justify-content: space-between;
+  padding: 0.6rem 0; border-bottom: 1px solid rgba(74,122,61,0.15);
+  font-family: var(--font-sans); font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+.hours-list li:first-child {
+  font-family: var(--font-display); font-size: 1.4rem; color: var(--green-800);
+  border-bottom: 1px solid var(--gold); padding-bottom: 1rem; margin-bottom: 0.5rem; display: block;
+  font-style: italic;
+}
+.hours-list strong { color: var(--green-900); font-weight: 500; }
+
+/* ============ FOOTER ============ */
+footer {
+  background: var(--green-900);
+  color: rgba(247,242,231,0.7);
+  padding: 4rem var(--pad-x) 2rem;
+  border-top: 1px solid rgba(201,169,97,0.15);
+}
+.footer-grid { max-width: var(--max-w); margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; }
+@media (max-width: 700px) { .footer-grid { grid-template-columns: 1fr; } }
+
+.footer-brand {
+  height: 70px;
+  margin-bottom: 1.5rem;
+}
+.footer-brand img {
+  height: 100%; width: auto;
+  object-fit: contain;
+}
+.footer-brand .amp { color: var(--gold); font-style: italic; }
+
+.footer p { font-size: 0.95rem; max-width: 38ch; line-height: 1.65; }
+
+.footer-col h4 {
+  font-family: var(--font-sans); font-size: 0.7rem; letter-spacing: 0.25em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem;
+}
+.footer-col ul { list-style: none; display: grid; gap: 0.65rem; }
+.footer-col a { font-size: 0.95rem; transition: color 0.25s; }
+.footer-col a:hover { color: var(--gold); }
+
+.footer-bottom {
+  max-width: var(--max-w); margin: 3rem auto 0; padding-top: 2rem;
+  border-top: 1px solid rgba(201,169,97,0.15);
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+  font-family: var(--font-sans); font-size: 0.72rem; letter-spacing: 0.15em;
+  text-transform: uppercase; color: rgba(247,242,231,0.5);
+}
+
+/* ============ FLOATING WHATSAPP ============ */
+.wa-float {
+  position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 90;
+  width: 58px; height: 58px; border-radius: 50%;
+  background: #25d366; color: white;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 10px 30px rgba(37,211,102,0.4);
+  transition: transform 0.3s;
+}
+.wa-float:hover { transform: scale(1.08); }
+.wa-float svg { width: 28px; height: 28px; fill: currentColor; }
+
+/* ============ REVEAL ANIMATION ============ */
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.9s, transform 0.9s; }
+.reveal.in { opacity: 1; transform: translateY(0); }
+
+/* ============ PRINT ============ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a href="#" class="brand" aria-label="Motel Le Jardam">
+    <img src="logo-lejardam.jpeg" alt="Motel Le Jardam" />
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#suites">Suítes</a></li>
+    <li><a href="#tarifas">Tarifas</a></li>
+    <li><a href="#servicos">Serviços</a></li>
+    <li><a href="#localizacao">Localização</a></li>
+    <li><a href="#reserva" class="nav-cta">Reservar</a></li>
+  </ul>
+  <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-grain"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-mark">Desde a primeira noite</div>
+      <h1>
+        <span class="word">Onde</span>
+        <span class="word">o tempo</span>
+        <span>pausa.</span>
+      </h1>
+      <p class="hero-lead">
+        Um refúgio discreto de dezessete suítes, pensado para quem valoriza privacidade,
+        conforto e aquele silêncio que só os bons encontros permitem.
+      </p>
+      <div class="hero-ctas">
+        <a href="#reserva" class="btn btn-primary">Fazer Reserva →</a>
+        <a href="#tarifas" class="btn btn-ghost">Ver tarifas</a>
+      </div>
+    </div>
+    <div class="hero-meta">
+      <div class="stat"><span class="num">17</span><span>Suítes<br/>Exclusivas</span></div>
+      <div class="stat"><span class="num">6</span><span>Categorias<br/>de Conforto</span></div>
+      <div class="stat"><span class="num">24h</span><span>Atendimento<br/>Discreto</span></div>
+    </div>
+  </div>
+  <div class="scroll-indicator">Role para explorar</div>
+</header>
+
+<!-- ABOUT -->
+<section class="about" id="sobre">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <span class="eyebrow">O Le Jardam</span>
+        <h2 class="section-title">Hospitalidade em sua forma mais íntima.</h2>
+        <p>
+          O Le Jardam nasceu do desejo de oferecer mais do que um espaço — oferecer uma experiência.
+          Cada detalhe foi pensado para que o tempo passado aqui pareça suspenso: das texturas discretas
+          à iluminação sob medida, do cuidado no atendimento ao silêncio dos corredores.
+        </p>
+        <p>
+          São dezessete suítes distribuídas em seis categorias, cada uma com sua personalidade,
+          seus cuidados e seus pequenos luxos. Do essencial refinado ao mais indulgente dos encontros,
+          há sempre um espaço à sua espera.
+        </p>
+        <p style="font-style: italic; color: var(--green-700); margin-top: 2rem;">
+          — Bem-vindo ao jardim que guarda seus segredos.
+        </p>
+      </div>
+      <div class="about-visual reveal">
+        <div class="mono">LJ</div>
+        <div class="badge">
+          <span>Est. Le Jardam</span>
+          <span>★</span>
+          <span>Brasil</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SUITES -->
+<section class="suites" id="suites">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Acomodações</span>
+      <h2 class="section-title">Dezessete suítes, seis histórias.</h2>
+      <p class="section-sub">
+        Cada categoria foi desenhada com um propósito distinto. Escolha o ritmo da sua noite.
+      </p>
+    </div>
+
+    <div class="cat-filter reveal" id="catFilter">
+      <button class="cat-btn active" data-filter="all">Todas</button>
+      <button class="cat-btn" data-filter="LUXO">Luxo</button>
+      <button class="cat-btn" data-filter="LUXO ESPECIAL">Luxo Especial</button>
+      <button class="cat-btn" data-filter="GRAN LUXO">Gran Luxo</button>
+      <button class="cat-btn" data-filter="MASTER LUXO">Master Luxo</button>
+      <button class="cat-btn" data-filter="HOT">Hot</button>
+      <button class="cat-btn" data-filter="SOFT">Soft</button>
+    </div>
+
+    <div class="suites-grid" id="suitesGrid">
+      <!-- Cards injected via JS -->
+    </div>
+  </div>
+</section>
+
+<!-- TARIFAS -->
+<section class="tarifas" id="tarifas">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Tarifas</span>
+      <h2 class="section-title">Preços transparentes, sem surpresas.</h2>
+      <p class="section-sub">
+        Valores por categoria, com opções de 2 horas, 3 horas e pernoite.
+        Pernoite inclui café da manhã.
+      </p>
+    </div>
+
+    <!-- Toggle período -->
+    <div class="tarif-toggle reveal" role="tablist" aria-label="Selecionar período">
+      <button class="tarif-tab active" data-period="semana" role="tab" aria-selected="true">Segunda a Quinta</button>
+      <button class="tarif-tab" data-period="fds" role="tab" aria-selected="false">Sexta a Domingo</button>
+    </div>
+
+    <!-- TABELA SEMANA -->
+    <div class="tarif-table-wrap reveal" data-period="semana">
+      <table class="tarif-table">
+        <thead>
+          <tr>
+            <th>Categoria</th>
+            <th>2 horas</th>
+            <th>3 horas</th>
+            <th>Pernoite</th>
+            <th>Hora adic.</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="is-featured">
+            <td><span class="cat-tag">Master Luxo</span></td>
+            <td>R$ 209,90</td><td>R$ 229,90</td><td>R$ 399,90</td><td>R$ 40</td>
+          </tr>
+          <tr>
+            <td><span class="cat-tag">Gran Luxo</span></td>
+            <td>R$ 149,90</td><td>R$ 189,90</td><td>R$ 329,90</td><td>R$ 40</td>
+          </tr>
+          <tr>
+            <td><span class="cat-tag">Luxo Especial</span></td>
+            <td>R$ 119,90</td><td>R$ 139,90</td><td>R$ 229,90</td><td>R$ 40</td>
+          </tr>
+          <tr>
+            <td><span class="cat-tag">Luxo</span></td>
+            <td>R$ 89,90</td><td>R$ 119,90</td><td>R$ 189,90</td><td>R$ 30</td>
+          </tr>
+          <tr>
+            <td><span class="cat-tag">Soft</span></td>
+            <td>R$ 189,90</td><td>R$ 219,90</td><td>R$ 379,90</td><td>R$ 40</td>
+          </tr>
+          <tr>
+            <td><span class="cat-tag">Hot</span></td>
+            <td>R$ 159,90</td><td>R$ 199,90</td><td>R$ 349,90</td><td>R$ 40</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- TABELA FDS -->
+    <div class="tarif-table-wrap reveal" data-period="fds" hidden>
+      <table class="tarif-table">
+        <thead>
+          <tr>
+            <th>Categoria</th>
+            <th>2 horas</th>
+            <th>3 horas</th>
+            <th>Pernoite</th>
+            <th>Hora adic.</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="is-featured">
+            <td><span class="cat-tag">Master Luxo</span></td>
+            <td>R$ 249,90</td><td>R$ 269,90</td><td>R$ 399,90</td><td>R$ 40</td>
+          </tr>
+          <tr>
+            <td><span class="cat-tag">Gran Luxo</span></td>
+            <td>R$ 179,90</td><td>R$ 219,90</td><td>R$ 349,90</td><td>R$ 40</td>
+          </tr>
+          <tr>
+            <td><span class="cat-tag">Luxo Especial</span></td>
+            <td>R$ 149,90</td><td>R$ 169,90</td><td>R$ 279,90</td><td>R$ 40</td>
+          </tr>
+          <tr>
+            <td><span class="cat-tag">Luxo</span></td>
+            <td>R$ 99,90</td><td>R$ 129,90</td><td>R$ 229,90</td><td>R$ 30</td>
+          </tr>
+          <tr>
+            <td><span class="cat-tag">Soft</span></td>
+            <td>R$ 229,90</td><td>R$ 259,90</td><td>R$ 399,90</td><td>R$ 40</td>
+          </tr>
+          <tr>
+            <td><span class="cat-tag">Hot</span></td>
+            <td>R$ 189,90</td><td>R$ 209,90</td><td>R$ 349,90</td><td>R$ 40</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="tarif-footnote reveal">
+      <span>✦</span> Pernoite com café da manhã incluso · Valores sujeitos a alteração sem aviso prévio
+    </div>
+  </div>
+</section>
+
+<!-- AMENITIES -->
+<section class="amenities" id="servicos">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Serviços & Comodidades</span>
+      <h2 class="section-title">Os detalhes que fazem a diferença.</h2>
+    </div>
+    <div class="amenities-grid">
+      <div class="amenity reveal">
+        <svg class="amenity-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+        <h3>Garagem Privativa</h3>
+        <p>Acesso individual e discreto a cada suíte, com privacidade total desde a chegada.</p>
+      </div>
+      <div class="amenity reveal">
+        <svg class="amenity-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        <h3>Atendimento 24h</h3>
+        <p>Equipe discreta e pronta para atender a qualquer hora, com serviço de quarto completo.</p>
+      </div>
+      <div class="amenity reveal">
+        <svg class="amenity-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M4 20V10l8-6 8 6v10"/><path d="M9 20v-6h6v6"/></svg>
+        <h3>Hidromassagem</h3>
+        <p>Disponível nas categorias Gran Luxo e Master Luxo, para momentos de relaxamento profundo.</p>
+      </div>
+      <div class="amenity reveal">
+        <svg class="amenity-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M3 6h18v12H3z"/><path d="M3 10h18"/></svg>
+        <h3>Cardápio Gourmet</h3>
+        <p>Pratos, bebidas e sobremesas selecionados, servidos em sua suíte com discrição.</p>
+      </div>
+      <div class="amenity reveal">
+        <svg class="amenity-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>
+        <h3>TV & Streaming</h3>
+        <p>Smart TVs com acesso às principais plataformas. A sua playlist, do jeito que você quiser.</p>
+      </div>
+      <div class="amenity reveal">
+        <svg class="amenity-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 2v20M2 12h20"/></svg>
+        <h3>Ar-Condicionado</h3>
+        <p>Climatização individual em todas as suítes, com frigobar abastecido na chegada.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESERVE -->
+<section class="reserve" id="reserva">
+  <div class="container reveal">
+    <span class="eyebrow">Reservas</span>
+    <h2 class="section-title">A sua noite começa com uma mensagem.</h2>
+    <p>
+      Entre em contato diretamente pelo WhatsApp para verificar disponibilidade,
+      categorias e valores. Atendimento ágil, discreto e sem burocracia.
+    </p>
+    <div class="hero-ctas" style="justify-content: center;">
+      <a href="#" id="waBtn" class="btn btn-primary">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A12 12 0 003.48 20.52L2 22l1.52-1.48A12 12 0 0020.52 3.48zM12 20a8 8 0 01-4.09-1.12l-.3-.18-3.03.8.8-3.03-.18-.3A8 8 0 1112 20zm4.5-5.87c-.25-.12-1.46-.72-1.68-.8-.22-.08-.39-.13-.55.13s-.63.8-.77.97c-.14.17-.28.19-.53.06a6.5 6.5 0 01-1.92-1.19 7.17 7.17 0 01-1.32-1.65c-.14-.24 0-.37.11-.5.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.17.04-.31-.02-.44l-.76-1.84c-.2-.48-.4-.41-.55-.42h-.47a.9.9 0 00-.66.31c-.22.24-.85.83-.85 2.03s.87 2.35 1 2.52c.12.17 1.73 2.64 4.2 3.7.58.25 1.04.4 1.4.51.59.19 1.12.16 1.54.1.47-.07 1.46-.6 1.67-1.18.2-.58.2-1.08.15-1.18-.06-.1-.22-.16-.47-.28z"/></svg>
+        Reservar pelo WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section class="location" id="localizacao">
+  <div class="container">
+    <div class="location-grid">
+      <div class="reveal">
+        <span class="eyebrow">Onde estamos</span>
+        <h2 class="section-title">Fácil de chegar. Difícil de esquecer.</h2>
+        <div class="location-info">
+          <dl>
+            <div>
+              <dt>Endereço</dt>
+              <dd id="addressLine">[Endereço completo — a confirmar]<small>LDI Turismo LTDA · CNPJ ao solicitar</small></dd>
+            </div>
+            <div>
+              <dt>Contato</dt>
+              <dd id="phoneLine">[Telefone — a confirmar]<small>WhatsApp com atendimento 24h</small></dd>
+            </div>
+            <div>
+              <dt>Redes</dt>
+              <dd><a href="#" style="color: var(--green-700); text-decoration: underline; text-decoration-color: var(--gold); text-underline-offset: 4px;">@lejardammotel</a><small>Instagram · novidades e promoções</small></dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <ul class="hours-list">
+          <li>Funcionamento</li>
+          <li><span>Segunda a Domingo</span><strong>24 horas</strong></li>
+          <li><span>Feriados</span><strong>Aberto</strong></li>
+          <li><span>Período curto</span><strong>A partir de 3h</strong></li>
+          <li><span>Pernoite</span><strong>Disponível</strong></li>
+          <li><span>Formas de pagamento</span><strong>Pix · Débito · Crédito</strong></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">
+        <img src="logo-lejardam.jpeg" alt="Motel Le Jardam" />
+      </div>
+      <p>Um refúgio discreto. Dezessete suítes pensadas para quem valoriza o tempo bem vivido.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navegar</h4>
+      <ul>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#suites">Suítes</a></li>
+        <li><a href="#tarifas">Tarifas</a></li>
+        <li><a href="#servicos">Serviços</a></li>
+        <li><a href="#localizacao">Localização</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contato</h4>
+      <ul>
+        <li><a href="#" id="waFooter">WhatsApp</a></li>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#reserva">Fazer reserva</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Le Jardam · LDI Turismo LTDA</span>
+    <span>Feito com discrição</span>
+  </div>
+</footer>
+
+<!-- FLOATING WHATSAPP -->
+<a href="#" id="waFloat" class="wa-float" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M20.52 3.48A12 12 0 003.48 20.52L2 22l1.52-1.48A12 12 0 0020.52 3.48zM12 20a8 8 0 01-4.09-1.12l-.3-.18-3.03.8.8-3.03-.18-.3A8 8 0 1112 20zm4.5-5.87c-.25-.12-1.46-.72-1.68-.8-.22-.08-.39-.13-.55.13s-.63.8-.77.97c-.14.17-.28.19-.53.06a6.5 6.5 0 01-1.92-1.19 7.17 7.17 0 01-1.32-1.65c-.14-.24 0-.37.11-.5.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.17.04-.31-.02-.44l-.76-1.84c-.2-.48-.4-.41-.55-.42h-.47a.9.9 0 00-.66.31c-.22.24-.85.83-.85 2.03s.87 2.35 1 2.52c.12.17 1.73 2.64 4.2 3.7.58.25 1.04.4 1.4.51.59.19 1.12.16 1.54.1.47-.07 1.46-.6 1.67-1.18.2-.58.2-1.08.15-1.18-.06-.1-.22-.16-.47-.28z"/></svg>
+</a>
+
+<script>
+/* ============ CONFIG — edite aqui os seus dados ============ */
+const CONFIG = {
+  whatsapp: '556235061912',             // 55 + 62 (DDD Goiás) + 35061912
+  whatsappMsg: 'Olá! Gostaria de verificar disponibilidade no Le Jardam.',
+  instagram: 'https://instagram.com/',
+  endereco: 'Av. Padre Pelágio, Qd. 01 Lt. 22 — Setor Laguna Parque, Trindade/GO',
+  telefone: '(62) 3506-1912',
+};
+
+/* ============ 17 SUÍTES (categorias confirmadas pelo sistema interno) ============ */
+const SUITES = [
+  { n: '01', cat: 'SOFT',          nome: 'Suíte Soft',             features: ['Cama Queen','TV Smart','Frigobar'] },
+  { n: '02', cat: 'HOT',           nome: 'Suíte Hot',              features: ['Espelho de teto','Iluminação cênica','Som ambiente'] },
+  { n: '03', cat: 'LUXO',          nome: 'Suíte Luxo 01',          features: ['Hidromassagem','Ducha dupla','Frigobar premium'] },
+  { n: '04', cat: 'LUXO',          nome: 'Suíte Luxo 02',          features: ['Hidromassagem','Ducha dupla','Frigobar premium'] },
+  { n: '05', cat: 'LUXO',          nome: 'Suíte Luxo 03',          features: ['Hidromassagem','Ducha dupla','Frigobar premium'] },
+  { n: '06', cat: 'LUXO',          nome: 'Suíte Luxo 04',          features: ['Hidromassagem','Ducha dupla','Frigobar premium'] },
+  { n: '07', cat: 'LUXO',          nome: 'Suíte Luxo 05',          features: ['Hidromassagem','Ducha dupla','Frigobar premium'] },
+  { n: '08', cat: 'LUXO',          nome: 'Suíte Luxo 06',          features: ['Hidromassagem','Ducha dupla','Frigobar premium'] },
+  { n: '09', cat: 'LUXO',          nome: 'Suíte Luxo 07',          features: ['Hidromassagem','Ducha dupla','Frigobar premium'] },
+  { n: '10', cat: 'LUXO',          nome: 'Suíte Luxo 08',          features: ['Hidromassagem','Ducha dupla','Frigobar premium'] },
+  { n: '11', cat: 'LUXO',          nome: 'Suíte Luxo 09',          features: ['Hidromassagem','Ducha dupla','Frigobar premium'] },
+  { n: '12', cat: 'LUXO',          nome: 'Suíte Luxo 10',          features: ['Hidromassagem','Ducha dupla','Frigobar premium'] },
+  { n: '13', cat: 'LUXO ESPECIAL', nome: 'Suíte Luxo Especial 01', features: ['Hidro dupla','Sauna a vapor','Bar privativo'] },
+  { n: '14', cat: 'LUXO ESPECIAL', nome: 'Suíte Luxo Especial 02', features: ['Hidro dupla','Sauna a vapor','Bar privativo'] },
+  { n: '15', cat: 'LUXO ESPECIAL', nome: 'Suíte Luxo Especial 03', features: ['Hidro dupla','Sauna a vapor','Bar privativo'] },
+  { n: '16', cat: 'GRAN LUXO',     nome: 'Suíte Gran Luxo',        features: ['Piscina privativa','Sauna seca','Cromoterapia'] },
+  { n: '17', cat: 'MASTER LUXO',   nome: 'Suíte Master Luxo',      features: ['Piscina aquecida','Sauna + Vapor','Hidro 2 pessoas','Champanheira'] },
+];
+
+/* ============ RENDER DAS SUÍTES ============ */
+const grid = document.getElementById('suitesGrid');
+function renderSuites(filter = 'all') {
+  grid.innerHTML = '';
+  const items = filter === 'all' ? SUITES : SUITES.filter(s => s.cat === filter);
+  items.forEach((s, i) => {
+    const card = document.createElement('article');
+    card.className = 'suite-card reveal';
+    card.dataset.cat = s.cat;
+    card.style.transitionDelay = `${i * 0.05}s`;
+    card.innerHTML = `
+      <div class="suite-visual"></div>
+      <div class="suite-number">Nº ${s.n}</div>
+      <div class="suite-icon">${s.cat.charAt(0)}</div>
+      <div class="suite-info">
+        <div class="suite-cat">${s.cat}</div>
+        <div class="suite-name">${s.nome}</div>
+        <div class="suite-features">
+          ${s.features.map(f => `<span>${f}</span>`).join('')}
+        </div>
+      </div>`;
+    // Parallax na cor
+    card.addEventListener('mousemove', (e) => {
+      const r = card.getBoundingClientRect();
+      const x = ((e.clientX - r.left) / r.width) * 100;
+      const y = ((e.clientY - r.top) / r.height) * 100;
+      card.querySelector('.suite-visual').style.setProperty('--x', `${x}%`);
+      card.querySelector('.suite-visual').style.setProperty('--y', `${y}%`);
+    });
+    grid.appendChild(card);
+  });
+  // Re-observa reveal
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+}
+
+/* ============ FILTROS ============ */
+document.getElementById('catFilter').addEventListener('click', (e) => {
+  if (!e.target.matches('.cat-btn')) return;
+  document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+  e.target.classList.add('active');
+  renderSuites(e.target.dataset.filter);
+});
+
+/* ============ REVEAL ON SCROLL ============ */
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(en => {
+    if (en.isIntersecting) { en.target.classList.add('in'); revealObserver.unobserve(en.target); }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+
+/* ============ NAV SCROLLED ============ */
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 40);
+});
+
+/* ============ MENU MOBILE ============ */
+const menuToggle = document.getElementById('menuToggle');
+const navLinks = document.getElementById('navLinks');
+menuToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+navLinks.addEventListener('click', (e) => {
+  if (e.target.tagName === 'A') navLinks.classList.remove('open');
+});
+
+/* ============ WHATSAPP ============ */
+const waHref = `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(CONFIG.whatsappMsg)}`;
+document.getElementById('waBtn').href = waHref;
+document.getElementById('waFloat').href = waHref;
+document.getElementById('waFooter').href = waHref;
+
+/* ============ TARIFAS — TOGGLE PERÍODO ============ */
+document.querySelectorAll('.tarif-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    const period = tab.dataset.period;
+    document.querySelectorAll('.tarif-tab').forEach(t => {
+      t.classList.toggle('active', t === tab);
+      t.setAttribute('aria-selected', t === tab);
+    });
+    document.querySelectorAll('.tarif-table-wrap').forEach(w => {
+      w.hidden = w.dataset.period !== period;
+    });
+  });
+});
+
+/* ============ TARIFAS — data-label p/ mobile responsive ============ */
+document.querySelectorAll('.tarif-table').forEach(table => {
+  const headers = [...table.querySelectorAll('thead th')].map(th => th.textContent.trim());
+  table.querySelectorAll('tbody tr').forEach(row => {
+    row.querySelectorAll('td').forEach((td, i) => {
+      if (i > 0) td.setAttribute('data-label', headers[i]);
+    });
+  });
+});
+
+/* ============ DADOS DINÂMICOS ============ */
+document.getElementById('phoneLine').innerHTML =
+  `${CONFIG.telefone}<small>WhatsApp com atendimento 24h</small>`;
+document.getElementById('addressLine').innerHTML =
+  `${CONFIG.endereco}<small>LDI Turismo LTDA</small>`;
+
+/* ============ INIT ============ */
+renderSuites();
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+</script>
+</body>
+</html>
