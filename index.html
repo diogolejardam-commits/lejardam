@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -902,6 +903,199 @@ footer {
   text-transform: uppercase; color: rgba(247,242,231,0.5);
 }
 
+/* ============ BOTÃO GALERIA NO CARD ============ */
+.cat-card-gallery-btn {
+  position: absolute;
+  top: 1.25rem;
+  left: 1.25rem;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.85rem;
+  background: rgba(15, 28, 11, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: var(--cream);
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  border: 1px solid rgba(201, 169, 97, 0.4);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(.2,.8,.2,1);
+}
+.cat-card-gallery-btn:hover {
+  background: var(--gold);
+  color: var(--green-900);
+  border-color: var(--gold);
+  transform: translateY(-2px);
+}
+.cat-card-gallery-btn svg { flex-shrink: 0; }
+
+/* ============ LIGHTBOX ============ */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(10, 18, 8, 0.97);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  display: none;
+  flex-direction: column;
+  animation: lbFadeIn 0.3s ease-out;
+}
+.lightbox.open { display: flex; }
+
+@keyframes lbFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.lb-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 210;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255, 253, 247, 0.1);
+  color: var(--cream);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.25s;
+  border: 1px solid rgba(201, 169, 97, 0.3);
+}
+.lb-close:hover {
+  background: var(--gold);
+  color: var(--green-900);
+  transform: rotate(90deg);
+}
+
+.lb-header {
+  padding: 1.5rem 5rem 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  color: var(--cream);
+  font-family: var(--font-sans);
+}
+.lb-title {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--white);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+.lb-counter {
+  font-size: 0.78rem;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+}
+
+.lb-img-wrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+.lb-img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  animation: lbImgIn 0.35s cubic-bezier(.2,.8,.2,1);
+}
+
+@keyframes lbImgIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.lb-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(15, 28, 11, 0.65);
+  border: 1px solid rgba(201, 169, 97, 0.3);
+  color: var(--cream);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.25s;
+  z-index: 5;
+}
+.lb-nav:hover {
+  background: var(--gold);
+  color: var(--green-900);
+  border-color: var(--gold);
+}
+.lb-prev { left: 1.5rem; }
+.lb-next { right: 1.5rem; }
+
+.lb-legenda {
+  text-align: center;
+  padding: 0.5rem 2rem 1rem;
+  color: rgba(247, 242, 231, 0.8);
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 1.05rem;
+}
+
+.lb-thumbs {
+  padding: 0 2rem 1.5rem;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  overflow-x: auto;
+  flex-wrap: nowrap;
+}
+.lb-thumb {
+  flex-shrink: 0;
+  width: 72px;
+  height: 54px;
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+  border: 2px solid transparent;
+  opacity: 0.55;
+  transition: all 0.25s;
+  padding: 0;
+}
+.lb-thumb:hover { opacity: 0.85; }
+.lb-thumb.active {
+  border-color: var(--gold);
+  opacity: 1;
+}
+
+/* Mobile adjustments */
+@media (max-width: 700px) {
+  .lb-header { padding: 1rem 4rem 0 1rem; }
+  .lb-title { font-size: 1.1rem; }
+  .lb-counter { font-size: 0.68rem; }
+  .lb-close { width: 40px; height: 40px; top: 1rem; right: 1rem; }
+  .lb-nav { width: 40px; height: 40px; }
+  .lb-prev { left: 0.5rem; }
+  .lb-next { right: 0.5rem; }
+  .lb-img-wrap { padding: 0.5rem 0.5rem; }
+  .lb-legenda { font-size: 0.9rem; padding: 0.5rem 1rem 0.75rem; }
+  .lb-thumbs { padding: 0 1rem 1rem; gap: 0.35rem; }
+  .lb-thumb { width: 56px; height: 42px; }
+  .cat-card-gallery-btn { font-size: 0.62rem; padding: 0.45rem 0.7rem; }
+}
+
 /* ============ FLOATING WHATSAPP ============ */
 .wa-float {
   position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 90;
@@ -1288,6 +1482,39 @@ footer {
   </div>
 </footer>
 
+<!-- LIGHTBOX / GALERIA -->
+<div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Galeria de fotos da suíte">
+  <button id="lb-close" class="lb-close" aria-label="Fechar galeria">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <line x1="18" y1="6" x2="6" y2="18"/>
+      <line x1="6" y1="6" x2="18" y2="18"/>
+    </svg>
+  </button>
+
+  <div class="lb-header">
+    <span id="lb-title" class="lb-title"></span>
+    <span id="lb-counter" class="lb-counter"></span>
+  </div>
+
+  <div id="lb-img-wrap" class="lb-img-wrap">
+    <button id="lb-prev" class="lb-nav lb-prev" aria-label="Foto anterior">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="15 18 9 12 15 6"/>
+      </svg>
+    </button>
+    <img id="lb-img" class="lb-img" src="" alt="" />
+    <button id="lb-next" class="lb-nav lb-next" aria-label="Próxima foto">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="9 18 15 12 9 6"/>
+      </svg>
+    </button>
+  </div>
+
+  <div id="lb-legenda" class="lb-legenda"></div>
+
+  <div id="lb-thumbs" class="lb-thumbs"></div>
+</div>
+
 <!-- FLOATING WHATSAPP -->
 <a href="#" id="waFloat" class="wa-float" aria-label="WhatsApp">
   <svg viewBox="0 0 24 24"><path d="M20.52 3.48A12 12 0 003.48 20.52L2 22l1.52-1.48A12 12 0 0020.52 3.48zM12 20a8 8 0 01-4.09-1.12l-.3-.18-3.03.8.8-3.03-.18-.3A8 8 0 1112 20zm4.5-5.87c-.25-.12-1.46-.72-1.68-.8-.22-.08-.39-.13-.55.13s-.63.8-.77.97c-.14.17-.28.19-.53.06a6.5 6.5 0 01-1.92-1.19 7.17 7.17 0 01-1.32-1.65c-.14-.24 0-.37.11-.5.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.17.04-.31-.02-.44l-.76-1.84c-.2-.48-.4-.41-.55-.42h-.47a.9.9 0 00-.66.31c-.22.24-.85.83-.85 2.03s.87 2.35 1 2.52c.12.17 1.73 2.64 4.2 3.7.58.25 1.04.4 1.4.51.59.19 1.12.16 1.54.1.47-.07 1.46-.6 1.67-1.18.2-.58.2-1.08.15-1.18-.06-.1-.22-.16-.47-.28z"/></svg>
@@ -1315,6 +1542,7 @@ const CATEGORIAS = [
     cat: 'LUXO',
     qtd: 10,
     foto: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80&auto=format&fit=crop',
+    galeria: [],
     destaque: 'A categoria mais procurada',
     features: ['Hidromassagem','Ducha dupla','Frigobar premium','TV Smart','Cama Queen']
   },
@@ -1323,6 +1551,7 @@ const CATEGORIAS = [
     cat: 'LUXO ESPECIAL',
     qtd: 3,
     foto: 'https://images.unsplash.com/photo-1590490360182-c33d57733427?w=1200&q=80&auto=format&fit=crop',
+    galeria: [],
     destaque: 'Refinamento elevado',
     features: ['Hidro dupla','Sauna a vapor','Bar privativo','TV Smart','Iluminação cênica']
   },
@@ -1331,6 +1560,7 @@ const CATEGORIAS = [
     cat: 'GRAN LUXO',
     qtd: 1,
     foto: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=1200&q=80&auto=format&fit=crop',
+    galeria: [],
     destaque: 'Exclusividade total',
     features: ['Piscina privativa','Sauna seca','Cromoterapia','Hidro dupla','Bar completo']
   },
@@ -1339,6 +1569,7 @@ const CATEGORIAS = [
     cat: 'MASTER LUXO',
     qtd: 1,
     foto: 'https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=1200&q=80&auto=format&fit=crop',
+    galeria: [],
     destaque: 'A experiência definitiva',
     features: ['Piscina aquecida','Sauna + Vapor','Hidro 2 pessoas','Champanheira','Sala de estar']
   },
@@ -1347,6 +1578,7 @@ const CATEGORIAS = [
     cat: 'HOT',
     qtd: 1,
     foto: 'https://images.unsplash.com/photo-1601571481255-3ab08d02b20b?w=1200&q=80&auto=format&fit=crop',
+    galeria: [],
     destaque: 'Clima envolvente',
     features: ['Espelho de teto','Iluminação cênica','Som ambiente','Cama redonda','Pole dance']
   },
@@ -1354,9 +1586,17 @@ const CATEGORIAS = [
     nome: 'Soft',
     cat: 'SOFT',
     qtd: 1,
-    foto: 'https://images.unsplash.com/photo-1540518614846-7eded433c457?w=1200&q=80&auto=format&fit=crop',
+    foto: 'fotos/soft-1.jpg',
+    galeria: [
+      { src: 'fotos/soft-1.jpg', legenda: 'Hidromassagem romântica' },
+      { src: 'fotos/soft-2.jpg', legenda: 'Cama com parede iluminada' },
+      { src: 'fotos/soft-3.jpg', legenda: 'Hidromassagem privativa' },
+      { src: 'fotos/soft-4.jpg', legenda: 'Banheiro exclusivo' },
+      { src: 'fotos/soft-5.jpg', legenda: 'Corredor com Smart TV Netflix' },
+      { src: 'fotos/soft-6.jpg', legenda: 'Ambiente amplo e decorado' },
+    ],
     destaque: 'Conforto essencial',
-    features: ['Cama Queen','TV Smart','Frigobar','Ar-condicionado','Ducha quente']
+    features: ['Hidromassagem','TV Smart com Netflix','Parede decorativa iluminada','Ar-condicionado','Frigobar']
   },
 ];
 
@@ -1366,13 +1606,26 @@ function renderCategorias() {
   grid.innerHTML = '';
   CATEGORIAS.forEach((c, i) => {
     const card = document.createElement('article');
-    card.className = 'cat-card reveal';
+    card.className = 'cat-card reveal' + (c.galeria && c.galeria.length > 0 ? ' has-gallery' : '');
     card.dataset.cat = c.cat;
     card.style.transitionDelay = `${i * 0.08}s`;
     const waMsg = encodeURIComponent(`Olá! Gostaria de verificar disponibilidade na categoria ${c.nome}.`);
+
+    const galeriaBtn = (c.galeria && c.galeria.length > 0)
+      ? `<button class="cat-card-gallery-btn" data-cat-index="${i}" aria-label="Ver galeria de fotos ${c.nome}">
+           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+             <rect x="3" y="3" width="18" height="18" rx="2"/>
+             <circle cx="8.5" cy="8.5" r="1.5" fill="currentColor"/>
+             <path d="M21 15l-5-5L5 21"/>
+           </svg>
+           ${c.galeria.length} fotos
+         </button>`
+      : '';
+
     card.innerHTML = `
       <div class="cat-card-visual" style="background-image:url('${c.foto}')"></div>
       <div class="cat-card-qtd">${c.qtd} ${c.qtd === 1 ? 'suíte' : 'suítes'}</div>
+      ${galeriaBtn}
       <div class="cat-card-info">
         <div class="cat-card-destaque">${c.destaque}</div>
         <h3 class="cat-card-nome">${c.nome}</h3>
@@ -1385,8 +1638,106 @@ function renderCategorias() {
       </div>`;
     grid.appendChild(card);
   });
+
+  // Ativa botões de galeria
+  document.querySelectorAll('.cat-card-gallery-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const idx = parseInt(btn.dataset.catIndex);
+      abrirGaleria(CATEGORIAS[idx]);
+    });
+  });
+
   document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 }
+
+/* ============ LIGHTBOX / GALERIA ============ */
+let galeriaAtual = null;
+let indiceAtual = 0;
+
+function abrirGaleria(categoria) {
+  galeriaAtual = categoria;
+  indiceAtual = 0;
+  const lb = document.getElementById('lightbox');
+  document.getElementById('lb-title').textContent = `Suíte ${categoria.nome}`;
+  renderFotoAtual();
+  renderMiniaturas();
+  lb.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function fecharGaleria() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function renderFotoAtual() {
+  if (!galeriaAtual) return;
+  const foto = galeriaAtual.galeria[indiceAtual];
+  document.getElementById('lb-img').src = foto.src;
+  document.getElementById('lb-img').alt = foto.legenda;
+  document.getElementById('lb-legenda').textContent = foto.legenda;
+  document.getElementById('lb-counter').textContent = `${indiceAtual + 1} / ${galeriaAtual.galeria.length}`;
+  // Atualiza estado das miniaturas
+  document.querySelectorAll('.lb-thumb').forEach((t, i) => {
+    t.classList.toggle('active', i === indiceAtual);
+  });
+}
+
+function renderMiniaturas() {
+  const tray = document.getElementById('lb-thumbs');
+  tray.innerHTML = '';
+  galeriaAtual.galeria.forEach((foto, i) => {
+    const thumb = document.createElement('button');
+    thumb.className = 'lb-thumb' + (i === indiceAtual ? ' active' : '');
+    thumb.style.backgroundImage = `url('${foto.src}')`;
+    thumb.setAttribute('aria-label', foto.legenda);
+    thumb.addEventListener('click', () => {
+      indiceAtual = i;
+      renderFotoAtual();
+    });
+    tray.appendChild(thumb);
+  });
+}
+
+function proximaFoto() {
+  if (!galeriaAtual) return;
+  indiceAtual = (indiceAtual + 1) % galeriaAtual.galeria.length;
+  renderFotoAtual();
+}
+
+function fotoAnterior() {
+  if (!galeriaAtual) return;
+  indiceAtual = (indiceAtual - 1 + galeriaAtual.galeria.length) % galeriaAtual.galeria.length;
+  renderFotoAtual();
+}
+
+// Event listeners do lightbox
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('lb-close').addEventListener('click', fecharGaleria);
+  document.getElementById('lb-prev').addEventListener('click', fotoAnterior);
+  document.getElementById('lb-next').addEventListener('click', proximaFoto);
+  document.getElementById('lightbox').addEventListener('click', (e) => {
+    if (e.target.id === 'lightbox') fecharGaleria();
+  });
+  // Teclas de navegação
+  document.addEventListener('keydown', (e) => {
+    if (!document.getElementById('lightbox').classList.contains('open')) return;
+    if (e.key === 'Escape') fecharGaleria();
+    if (e.key === 'ArrowRight') proximaFoto();
+    if (e.key === 'ArrowLeft') fotoAnterior();
+  });
+  // Swipe no mobile
+  let touchStartX = 0;
+  const lbImgWrap = document.getElementById('lb-img-wrap');
+  lbImgWrap.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; });
+  lbImgWrap.addEventListener('touchend', (e) => {
+    const diff = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) fotoAnterior(); else proximaFoto();
+    }
+  });
+});
 
 /* ============ REVEAL ON SCROLL ============ */
 const revealObserver = new IntersectionObserver((entries) => {
