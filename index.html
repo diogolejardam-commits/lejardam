@@ -20,9 +20,11 @@
 <meta name="ICBM" content="-16.645167, -49.512394" />
 
 <!-- ===== ÍCONES E PWA ===== -->
-<link rel="icon" type="image/jpeg" href="logo-lejardam.jpeg" />
-<link rel="apple-touch-icon" href="logo-lejardam.jpeg" />
-<link rel="manifest" href="manifest.json" />
+<link rel="icon" type="image/x-icon" href="favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+<link rel="manifest" href="site.webmanifest" />
 <meta name="theme-color" content="#1e3519" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -103,6 +105,7 @@
     "contactOption": "TollFree"
   },
   "sameAs": [
+    "https://www.instagram.com/lejardam",
     "https://www.google.com/maps/place/?q=place_id:ChIJ1yhuRodnXpMRqa9YNZDmUjg"
   ]
 }
@@ -1398,15 +1401,15 @@ footer {
           <dl>
             <div>
               <dt>Endereço</dt>
-              <dd id="addressLine">[Endereço completo — a confirmar]<small>LDI Turismo LTDA · CNPJ ao solicitar</small></dd>
+              <dd id="addressLine">Av. Padre Pelágio, Qd. 01 Lt. 22 — Setor Laguna Parque, Trindade/GO<small>LDI Turismo LTDA</small></dd>
             </div>
             <div>
               <dt>Contato</dt>
-              <dd id="phoneLine">[Telefone — a confirmar]<small>WhatsApp com atendimento 24h</small></dd>
+              <dd id="phoneLine">(62) 3506-1912<small>WhatsApp com atendimento 24h</small></dd>
             </div>
             <div>
               <dt>Redes</dt>
-              <dd><a href="#" style="color: var(--green-700); text-decoration: underline; text-decoration-color: var(--gold); text-underline-offset: 4px;">@lejardammotel</a><small>Instagram · novidades e promoções</small></dd>
+              <dd><a href="https://instagram.com/lejardam" target="_blank" rel="noopener" style="color: var(--green-700); text-decoration: underline; text-decoration-color: var(--gold); text-underline-offset: 4px;">@lejardam</a><small>Instagram · novidades e promoções</small></dd>
             </div>
           </dl>
         </div>
@@ -1471,7 +1474,7 @@ footer {
       <h4>Contato</h4>
       <ul>
         <li><a href="#" id="waFooter">WhatsApp</a></li>
-        <li><a href="#">Instagram</a></li>
+        <li><a href="https://instagram.com/lejardam" id="igFooter" target="_blank" rel="noopener">Instagram</a></li>
         <li><a href="#reserva">Fazer reserva</a></li>
       </ul>
     </div>
@@ -1525,7 +1528,7 @@ footer {
 const CONFIG = {
   whatsapp: '556235061912',             // 55 + 62 (DDD Goiás) + 35061912
   whatsappMsg: 'Olá! Gostaria de verificar disponibilidade no Le Jardam.',
-  instagram: 'https://instagram.com/',
+  instagram: 'https://instagram.com/lejardam',
   endereco: 'Av. Padre Pelágio, Qd. 01 Lt. 22 — Setor Laguna Parque, Trindade/GO',
   telefone: '(62) 3506-1912',
 };
