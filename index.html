@@ -1981,5 +1981,44 @@ if ('serviceWorker' in navigator) {
 renderCategorias();
 document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 </script>
+
+<!-- LJO-SITE-116 — Assistente virtual FAQ · preparação publicação local -->
+<link rel="stylesheet" href="chatbot/chatbot-widget.css">
+<div id="lj-chatbot-root" class="lj-chat-root" aria-live="polite">
+  <button type="button" id="lj-chat-toggle" class="lj-chat-toggle" aria-label="Abrir atendimento virtual do Le Jardam Motel">
+    <span class="lj-chat-toggle-icon">💬</span>
+    <span class="lj-chat-toggle-label">Atendimento</span>
+  </button>
+  <div id="lj-chat-window" class="lj-chat-window lj-chat-hidden" role="dialog" aria-label="Assistente virtual Le Jardam">
+    <header class="lj-chat-header">
+      <div class="lj-chat-header-info">
+        <span class="lj-chat-avatar">🍃</span>
+        <div>
+          <strong>Assistente Le Jardam</strong>
+          <span class="lj-chat-status">Assistente virtual · FAQ</span>
+        </div>
+      </div>
+      <button type="button" id="lj-chat-close" class="lj-chat-close" aria-label="Fechar">✕</button>
+    </header>
+    <div id="lj-chat-messages" class="lj-chat-messages"></div>
+    <div id="lj-chat-quick" class="lj-chat-quick"></div>
+    <footer class="lj-chat-footer">
+      <button type="button" id="lj-chat-btn-whatsapp" class="lj-chat-btn-whatsapp">
+        <span>📱</span> Continuar no WhatsApp
+      </button>
+      <p class="lj-chat-disclaimer">Respostas automáticas de orientação. Para reservas, fale com nossa equipe.</p>
+    </footer>
+  </div>
+  <div id="lj-chat-wa-modal" class="lj-chat-wa-modal lj-chat-hidden" role="alertdialog" aria-labelledby="lj-chat-wa-title">
+    <div class="lj-chat-wa-modal-box">
+      <h2 id="lj-chat-wa-title">Falar com nossa equipe</h2>
+      <p>Para reservas e atendimento personalizado, continue pelo WhatsApp oficial.</p>
+      <p class="lj-chat-wa-number">(62) 3506-1912</p>
+      <p class="lj-chat-wa-msg" id="lj-chat-wa-preview"></p>
+      <button type="button" id="lj-chat-wa-close" class="lj-chat-btn-close-modal">Entendi</button>
+    </div>
+  </div>
+</div>
+<script src="chatbot/chatbot-widget.js" defer></script>
 </body>
 </html>
