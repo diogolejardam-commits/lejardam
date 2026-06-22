@@ -111,6 +111,70 @@
     ],
   };
 
+  /** LJO-SITE-141 — Catálogo visual mínimo (Opção D · híbrido leve) */
+  const SUITE_CATALOG = [
+    {
+      id: 'luxo',
+      nome: 'Luxo',
+      destaque: 'A categoria mais procurada',
+      qtd: 10,
+      imagem: 'fotos/chatbot/luxo-thumb.jpg',
+      cardSelector: '.cat-card[data-cat="LUXO"]',
+      galleryBtnSelector: '.cat-card[data-cat="LUXO"] .cat-card-gallery-btn',
+      catIndex: 0,
+    },
+    {
+      id: 'luxo-especial',
+      nome: 'Luxo Especial',
+      destaque: 'Refinamento elevado',
+      qtd: 3,
+      imagem: 'fotos/chatbot/luxo-especial-thumb.jpg',
+      cardSelector: '.cat-card[data-cat="LUXO ESPECIAL"]',
+      galleryBtnSelector: '.cat-card[data-cat="LUXO ESPECIAL"] .cat-card-gallery-btn',
+      catIndex: 1,
+    },
+    {
+      id: 'gran-luxo',
+      nome: 'Gran Luxo',
+      destaque: 'Exclusividade total',
+      qtd: 1,
+      imagem: 'fotos/chatbot/gran-luxo-thumb.jpg',
+      cardSelector: '.cat-card[data-cat="GRAN LUXO"]',
+      galleryBtnSelector: '.cat-card[data-cat="GRAN LUXO"] .cat-card-gallery-btn',
+      catIndex: 2,
+    },
+    {
+      id: 'master-luxo',
+      nome: 'Master Luxo',
+      destaque: 'A experiência definitiva',
+      qtd: 1,
+      imagem: 'fotos/chatbot/master-luxo-thumb.jpg',
+      cardSelector: '.cat-card[data-cat="MASTER LUXO"]',
+      galleryBtnSelector: '.cat-card[data-cat="MASTER LUXO"] .cat-card-gallery-btn',
+      catIndex: 3,
+    },
+    {
+      id: 'hot',
+      nome: 'Hot',
+      destaque: 'Clima envolvente',
+      qtd: 1,
+      imagem: 'fotos/chatbot/hot-thumb.jpg',
+      cardSelector: '.cat-card[data-cat="HOT"]',
+      galleryBtnSelector: '.cat-card[data-cat="HOT"] .cat-card-gallery-btn',
+      catIndex: 4,
+    },
+    {
+      id: 'soft',
+      nome: 'Soft',
+      destaque: 'Conforto essencial',
+      qtd: 1,
+      imagem: 'fotos/chatbot/soft-thumb.jpg',
+      cardSelector: '.cat-card[data-cat="SOFT"]',
+      galleryBtnSelector: '.cat-card[data-cat="SOFT"] .cat-card-gallery-btn',
+      catIndex: 5,
+    },
+  ];
+
   function initLjChatbot() {
     const root = document.getElementById('lj-chatbot-root');
     if (!root) return;
@@ -192,12 +256,93 @@
       const cat = FAQ_BASE.categorias.find((c) => c.id === catId);
       const items = FAQ_BASE.faq.filter((f) => f.categoria === catId);
       addMessage(`Perguntas sobre <strong>${cat.nome}</strong>:`, 'bot');
-      renderQuickButtons(
-        items.map((f) => ({
-          label: f.pergunta,
-          action: () => selectFaq(f),
-        }))
+      const buttons = items.map((f) => ({
+        label: f.pergunta,
+        action: () => selectFaq(f),
+      }));
+      if (catId === 'CAT-SUI') {
+        buttons.push({
+          label: '🖼️ Ver suítes e fotos',
+          action: showSuiteCards,
+        });
+      }
+      renderQuickButtons(buttons);
+    }
+
+    function removeSuiteGrid() {
+      const existing = messagesEl.querySelector('.lj-chat-suite-grid');
+      if (existing) existing.remove();
+    }
+
+    function showSuiteCards() {
+      ultimaPergunta = 'Suítes e fotos';
+      addMessage('🖼️ Ver suítes e fotos', 'user');
+      addMessage(
+        'Conheça as <strong>6 categorias</strong> de suítes do Le Jardam. Toque em <strong>Ver fotos</strong> para ir até a galeria da categoria no site.',
+        'bot'
       );
+      removeSuiteGrid();
+
+      const grid = document.createElement('div');
+      grid.className = 'lj-chat-suite-grid';
+      grid.setAttribute('role', 'list');
+      grid.setAttribute('aria-label', 'Categorias de suítes');
+
+      SUITE_CATALOG.forEach((suite) => {
+        const card = document.createElement('article');
+        card.className = 'lj-chat-suite-card';
+        card.setAttribute('role', 'listitem');
+
+        const qtdLabel = `${suite.qtd} ${suite.qtd === 1 ? 'suíte' : 'suítes'}`;
+
+        card.innerHTML = `
+          <img class="lj-chat-suite-img" src="${suite.imagem}" alt="Suíte ${suite.nome}" loading="lazy" width="400" height="300">
+          <div class="lj-chat-suite-body">
+            <h4 class="lj-chat-suite-nome">${suite.nome}</h4>
+            <p class="lj-chat-suite-destaque">${suite.destaque}</p>
+            <p class="lj-chat-suite-qtd">${qtdLabel}</p>
+            <button type="button" class="lj-chat-suite-photos-btn">Ver fotos</button>
+          </div>
+        `;
+
+        card.querySelector('.lj-chat-suite-photos-btn').addEventListener('click', () => {
+          goToSuiteGallery(suite);
+        });
+        grid.appendChild(card);
+      });
+
+      messagesEl.appendChild(grid);
+      messagesEl.scrollTop = messagesEl.scrollHeight;
+
+      renderQuickButtons([
+        { label: '↩ Voltar às perguntas', action: () => { removeSuiteGrid(); showFaqByCategory('CAT-SUI'); } },
+        { label: '↩ Início', action: resetToWelcome },
+      ]);
+    }
+
+    function goToSuiteGallery(suite) {
+      closeChat();
+      waModal.classList.add('lj-chat-hidden');
+
+      window.setTimeout(() => {
+        const card = document.querySelector(suite.cardSelector);
+        if (!card) return;
+
+        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+        window.setTimeout(() => {
+          const galleryBtn = document.querySelector(suite.galleryBtnSelector);
+          if (!galleryBtn) return;
+
+          galleryBtn.focus({ preventScroll: true });
+          galleryBtn.style.outline = '3px solid #2f7d59';
+          galleryBtn.style.outlineOffset = '3px';
+          window.setTimeout(() => {
+            galleryBtn.style.outline = '';
+            galleryBtn.style.outlineOffset = '';
+          }, 2500);
+        }, 500);
+      }, 300);
     }
 
     function selectFaq(faq) {

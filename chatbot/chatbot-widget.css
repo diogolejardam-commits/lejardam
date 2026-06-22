@@ -253,6 +253,99 @@
   font-weight: 600;
 }
 
+/* LJO-SITE-141 — cards visuais compactos das suítes */
+.lj-chat-suite-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  width: 100%;
+  align-self: stretch;
+  max-width: 100%;
+}
+
+.lj-chat-suite-card {
+  display: flex;
+  gap: 0.65rem;
+  background: var(--lj-panel);
+  border: 1px solid var(--lj-line);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.lj-chat-suite-img {
+  width: 88px;
+  min-width: 88px;
+  height: 72px;
+  object-fit: cover;
+  display: block;
+  background: var(--lj-bot-bg);
+}
+
+.lj-chat-suite-body {
+  flex: 1;
+  min-width: 0;
+  padding: 0.5rem 0.6rem 0.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.lj-chat-suite-nome {
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--lj-green-dark);
+  line-height: 1.2;
+}
+
+.lj-chat-suite-destaque {
+  margin: 0;
+  font-size: 0.7rem;
+  color: var(--lj-muted);
+  line-height: 1.3;
+}
+
+.lj-chat-suite-qtd {
+  margin: 0;
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--lj-text);
+}
+
+.lj-chat-suite-photos-btn {
+  align-self: flex-start;
+  margin-top: 0.25rem;
+  background: transparent;
+  border: 1px solid var(--lj-green);
+  color: var(--lj-green-dark);
+  border-radius: 6px;
+  padding: 0.3rem 0.55rem;
+  font-size: 0.68rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.lj-chat-suite-photos-btn:hover,
+.lj-chat-suite-photos-btn:focus {
+  background: var(--lj-bot-bg);
+  outline: 2px solid var(--lj-green);
+  outline-offset: 1px;
+}
+
+@media (max-width: 480px) {
+  .lj-chat-suite-img {
+    width: 76px;
+    min-width: 76px;
+    height: 64px;
+  }
+
+  .lj-chat-suite-nome {
+    font-size: 0.8rem;
+  }
+}
+
 /* LJO-SITE-133 — separa chatbot e WhatsApp no desktop/tablet (>480px) */
 @media (min-width: 481px) {
   .lj-chat-toggle {
