@@ -253,24 +253,47 @@
   font-weight: 600;
 }
 
+/* LJO-SITE-133 — separa chatbot e WhatsApp no desktop/tablet (>480px) */
+@media (min-width: 481px) {
+  .lj-chat-toggle {
+    right: calc(1.5rem + 58px + 0.75rem);
+  }
+}
+
 @media (max-width: 480px) {
-  /* LJO-SITE-113 — evita sobreposição com hero/stats e wa-float (direita) */
+  /* LJO-SITE-131 — faixa inferior alinhada: Atendimento (esq.) + wa-float (dir.) */
   .lj-chat-toggle {
     left: 0.75rem;
     right: auto;
-    bottom: calc(5.5rem + env(safe-area-inset-bottom, 0px));
-    padding: 0.65rem 0.9rem;
-    font-size: 0.82rem;
-    max-width: calc(100vw - 5.25rem);
+    bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+    padding: 0.65rem 0.85rem;
+    font-size: 0.8rem;
+    max-width: calc(100vw - 0.75rem - 0.75rem - 52px - 0.5rem);
     box-shadow: 0 6px 20px rgba(47, 125, 89, 0.32);
+    z-index: 9990;
+  }
+
+  .wa-float {
+    right: 0.75rem;
+    left: auto;
+    bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+    width: 52px;
+    height: 52px;
+    z-index: 9989;
+  }
+
+  .wa-float svg {
+    width: 26px;
+    height: 26px;
   }
 
   .lj-chat-window {
-    right: 0.75rem;
     left: 0.75rem;
+    right: 0.75rem;
     width: auto;
-    bottom: calc(9.75rem + env(safe-area-inset-bottom, 0px));
-    height: min(480px, calc(100vh - 11.5rem - env(safe-area-inset-bottom, 0px)));
+    bottom: calc(5.25rem + env(safe-area-inset-bottom, 0px));
+    height: min(480px, calc(100vh - 7.5rem - env(safe-area-inset-bottom, 0px)));
+    z-index: 9991;
   }
 
   .lj-chat-toggle-label {
