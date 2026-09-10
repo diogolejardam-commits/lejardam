@@ -1208,6 +1208,116 @@ footer {
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }
+
+/* ============ RESERVA ONLINE — ClickMotéis ============ */
+.cat-card-reserva {
+  margin-top: auto;
+  width: 100%;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--green-900);
+  background: var(--gold);
+  border: 1px solid var(--gold);
+  padding: 0.95rem 1rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  transition: background 0.25s, color 0.25s;
+}
+.cat-card-reserva:hover { background: var(--gold-soft); border-color: var(--gold-soft); }
+.cat-card-reserva:focus-visible, .reserva-tab:focus-visible, .reserva-close:focus-visible {
+  outline: 2px solid var(--gold-soft); outline-offset: 3px;
+}
+.cat-card-reserva + .cat-card-cta { margin-top: 0; }
+
+.reserva-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483000;
+  display: none;
+  justify-content: center;
+  align-items: flex-start;
+  overflow-y: auto;
+  padding: clamp(0.5rem, 3vw, 2rem);
+  /* sem backdrop-filter: ele prenderia a janela interna do widget (position:fixed) */
+  background: rgba(10, 18, 8, 0.97);
+  animation: lbFadeIn 0.3s ease-out;
+}
+.reserva-modal.open { display: flex; }
+.reserva-box {
+  position: relative;
+  width: min(760px, 100%);
+  margin: auto 0;
+  background: var(--green-900);
+  border: 1px solid rgba(201, 169, 97, 0.3);
+  color: var(--cream);
+}
+.reserva-close {
+  position: absolute;
+  top: 0.9rem;
+  right: 0.9rem;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 253, 247, 0.08);
+  color: var(--cream);
+  border: 1px solid rgba(201, 169, 97, 0.3);
+  cursor: pointer;
+  transition: all 0.25s;
+}
+.reserva-close:hover { background: var(--gold); color: var(--green-900); transform: rotate(90deg); }
+.reserva-head { padding: 1.6rem clamp(1rem, 4vw, 2rem) 1rem; border-bottom: 1px solid rgba(201, 169, 97, 0.2); }
+.reserva-title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.5rem, 3.4vw, 2rem);
+  color: var(--white);
+  margin: 0.35rem 3rem 1.1rem 0;
+}
+.reserva-tabs { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+.reserva-tab {
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cream);
+  background: transparent;
+  border: 1px solid rgba(201, 169, 97, 0.35);
+  padding: 0.6rem 0.85rem;
+  min-height: 40px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.reserva-tab:hover { border-color: var(--gold); color: var(--white); }
+.reserva-tab[aria-selected="true"] { background: var(--gold); border-color: var(--gold); color: var(--green-900); font-weight: 600; }
+.reserva-body { padding: 1rem clamp(0.5rem, 3vw, 1.5rem); min-height: 240px; }
+.reserva-loading { font-family: var(--font-sans); font-size: 0.85rem; color: var(--gold-soft); text-align: center; padding: 3rem 0; margin: 0; }
+.reserva-loading a { color: var(--gold); }
+.reserva-painel { display: none; }
+.reserva-painel.ativo { display: block; }
+.reserva-foot {
+  margin: 0;
+  padding: 1rem clamp(1rem, 4vw, 2rem) 1.3rem;
+  border-top: 1px solid rgba(201, 169, 97, 0.2);
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  color: rgba(247, 242, 231, 0.75);
+  text-align: center;
+}
+.reserva-foot a { color: var(--gold); text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 560px) {
+  .reserva-modal { padding: 0; }
+  .reserva-box { min-height: 100%; border: 0; }
+  .reserva-tab { flex: 1 1 calc(50% - 0.45rem); }
+}
 </style>
 </head>
 <body>
@@ -1475,6 +1585,7 @@ footer {
         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A12 12 0 003.48 20.52L2 22l1.52-1.48A12 12 0 0020.52 3.48zM12 20a8 8 0 01-4.09-1.12l-.3-.18-3.03.8.8-3.03-.18-.3A8 8 0 1112 20zm4.5-5.87c-.25-.12-1.46-.72-1.68-.8-.22-.08-.39-.13-.55.13s-.63.8-.77.97c-.14.17-.28.19-.53.06a6.5 6.5 0 01-1.92-1.19 7.17 7.17 0 01-1.32-1.65c-.14-.24 0-.37.11-.5.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.17.04-.31-.02-.44l-.76-1.84c-.2-.48-.4-.41-.55-.42h-.47a.9.9 0 00-.66.31c-.22.24-.85.83-.85 2.03s.87 2.35 1 2.52c.12.17 1.73 2.64 4.2 3.7.58.25 1.04.4 1.4.51.59.19 1.12.16 1.54.1.47-.07 1.46-.6 1.67-1.18.2-.58.2-1.08.15-1.18-.06-.1-.22-.16-.47-.28z"/></svg>
         Reservar pelo WhatsApp
       </a>
+      <a href="#suites" id="reservaOnlineBtn" class="btn btn-ghost">Reservar online</a>
     </div>
   </div>
 </section>
@@ -1616,6 +1727,25 @@ footer {
 </div>
 
 <!-- FLOATING WHATSAPP -->
+<!-- ============ RESERVA ONLINE — ClickMotéis / Guia de Motéis ============ -->
+<div id="reservaModal" class="reserva-modal" role="dialog" aria-modal="true" aria-labelledby="reservaTitulo">
+  <div class="reserva-box">
+    <button type="button" class="reserva-close" aria-label="Fechar reserva online">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+    <div class="reserva-head">
+      <span class="eyebrow">Reserva online</span>
+      <h2 class="reserva-title" id="reservaTitulo">Suíte <span id="reservaNome">Luxo</span></h2>
+      <div class="reserva-tabs" role="tablist" aria-label="Escolha a categoria da suíte"></div>
+    </div>
+    <div class="reserva-body">
+      <p class="reserva-loading" id="reservaLoading" role="status">Carregando disponibilidade…</p>
+      <div id="reservaPaineis"></div>
+    </div>
+    <p class="reserva-foot">Prefere falar com a recepção? <a href="#" id="reservaWa" target="_blank" rel="noopener">Chame no WhatsApp</a></p>
+  </div>
+</div>
+
 <a href="#" id="waFloat" class="wa-float" aria-label="WhatsApp">
   <svg viewBox="0 0 24 24"><path d="M20.52 3.48A12 12 0 003.48 20.52L2 22l1.52-1.48A12 12 0 0020.52 3.48zM12 20a8 8 0 01-4.09-1.12l-.3-.18-3.03.8.8-3.03-.18-.3A8 8 0 1112 20zm4.5-5.87c-.25-.12-1.46-.72-1.68-.8-.22-.08-.39-.13-.55.13s-.63.8-.77.97c-.14.17-.28.19-.53.06a6.5 6.5 0 01-1.92-1.19 7.17 7.17 0 01-1.32-1.65c-.14-.24 0-.37.11-.5.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.17.04-.31-.02-.44l-.76-1.84c-.2-.48-.4-.41-.55-.42h-.47a.9.9 0 00-.66.31c-.22.24-.85.83-.85 2.03s.87 2.35 1 2.52c.12.17 1.73 2.64 4.2 3.7.58.25 1.04.4 1.4.51.59.19 1.12.16 1.54.1.47-.07 1.46-.6 1.67-1.18.2-.58.2-1.08.15-1.18-.06-.1-.22-.16-.47-.28z"/></svg>
 </a>
@@ -1641,6 +1771,7 @@ const CATEGORIAS = [
   {
     nome: 'Luxo',
     cat: 'LUXO',
+    token: '29981LRPGA',            // ClickMotéis / Guia de Motéis
     qtd: 10,
     foto: 'fotos/luxo-1.jpg',
     galeria: [
@@ -1657,6 +1788,7 @@ const CATEGORIAS = [
   {
     nome: 'Luxo Especial',
     cat: 'LUXO ESPECIAL',
+    token: '71755RDIKU',            // ClickMotéis / Guia de Motéis
     qtd: 3,
     foto: 'fotos/luxo-especial-1.jpg',
     galeria: [
@@ -1673,6 +1805,7 @@ const CATEGORIAS = [
   {
     nome: 'Gran Luxo',
     cat: 'GRAN LUXO',
+    token: '19864GGCIN',            // ClickMotéis / Guia de Motéis
     qtd: 1,
     foto: 'fotos/gran-luxo-4.jpg',
     galeria: [
@@ -1688,6 +1821,7 @@ const CATEGORIAS = [
   {
     nome: 'Master Luxo',
     cat: 'MASTER LUXO',
+    token: '77966IMTVW',            // ClickMotéis / Guia de Motéis
     qtd: 1,
     foto: 'fotos/master-luxo-1.jpg',
     galeria: [
@@ -1704,6 +1838,7 @@ const CATEGORIAS = [
   {
     nome: 'Hot',
     cat: 'HOT',
+    token: '49572XYTEK',            // ClickMotéis / Guia de Motéis
     qtd: 1,
     foto: 'fotos/hot-1.jpg',
     galeria: [
@@ -1720,6 +1855,7 @@ const CATEGORIAS = [
   {
     nome: 'Soft',
     cat: 'SOFT',
+    token: '24123EMXHK',            // ClickMotéis / Guia de Motéis
     qtd: 1,
     foto: 'fotos/soft-1.jpg',
     galeria: [
@@ -1784,11 +1920,20 @@ function renderCategorias() {
         <ul class="cat-card-features">
           ${c.features.map(f => `<li>${f}</li>`).join('')}
         </ul>
+        ${c.token ? `<button type="button" class="cat-card-reserva" data-reserva-index="${i}" aria-label="Ver disponibilidade e reservar a suíte ${c.nome}">Ver disponibilidade e reservar <span aria-hidden="true">&rarr;</span></button>` : ''}
         <a href="https://wa.me/${CONFIG.whatsapp}?text=${waMsg}" target="_blank" rel="noopener" class="cat-card-cta">
           Reservar ${c.nome} no WhatsApp →
         </a>
       </div>`;
     grid.appendChild(card);
+  });
+
+  // Ativa botões de reserva online (ClickMotéis)
+  document.querySelectorAll('.cat-card-reserva').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (typeof abrirReserva === 'function') abrirReserva(parseInt(btn.dataset.reservaIndex, 10), btn);
+    });
   });
 
   // Ativa botões de galeria
@@ -2020,5 +2165,119 @@ document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
   </div>
 </div>
 <script src="chatbot/chatbot-widget.js" defer></script>
+<script>
+/* ============ RESERVA ONLINE — ClickMotéis / Guia de Motéis ============
+   O script do widget (2,1 MB) só é baixado quando o visitante abre a reserva.
+   Ele procura os blocos .suites-availability-go UMA única vez, ao carregar —
+   por isso os 6 blocos são criados antes, já na abertura da página. */
+(function () {
+  var GO_CSS = 'https://go.guiademoteis.com.br/go-sites/go.min.css';
+  var GO_JS  = 'https://go.guiademoteis.com.br/go-sites/go.min.js';
+  var CSS_LOCAL = ['reservas/widget-calendario.css', 'reservas/lejardam-widget-tema.css'];
+
+  var modal = document.getElementById('reservaModal');
+  if (!modal || typeof CATEGORIAS === 'undefined') return;
+
+  var tabs     = modal.querySelector('.reserva-tabs');
+  var paineis  = document.getElementById('reservaPaineis');
+  var nomeEl   = document.getElementById('reservaNome');
+  var loading  = document.getElementById('reservaLoading');
+  var waLink   = document.getElementById('reservaWa');
+  var fecharBt = modal.querySelector('.reserva-close');
+  var carregado = false, ultimoFoco = null;
+
+  var cats = [];
+  CATEGORIAS.forEach(function (c, i) { if (c.token) cats.push({ nome: c.nome, token: c.token, i: i }); });
+  if (!cats.length) return;
+
+  cats.forEach(function (c) {
+    var tab = document.createElement('button');
+    tab.type = 'button';
+    tab.className = 'reserva-tab';
+    tab.id = 'reservaTab' + c.i;
+    tab.setAttribute('role', 'tab');
+    tab.setAttribute('aria-controls', 'reservaPainel' + c.i);
+    tab.setAttribute('aria-selected', 'false');
+    tab.textContent = c.nome;
+    tab.addEventListener('click', function () { ativar(c.i); });
+    tabs.appendChild(tab);
+
+    var painel = document.createElement('div');
+    painel.className = 'reserva-painel';
+    painel.id = 'reservaPainel' + c.i;
+    painel.setAttribute('role', 'tabpanel');
+    painel.setAttribute('aria-labelledby', 'reservaTab' + c.i);
+    painel.innerHTML = '<div class="suites-availability-go" data-suite="' + c.token + '" data-calendario="1"></div>';
+    paineis.appendChild(painel);
+  });
+
+  function carregarWidget() {
+    if (carregado) return;
+    carregado = true;
+    [GO_CSS].concat(CSS_LOCAL).forEach(function (href) {
+      var l = document.createElement('link');
+      l.rel = 'stylesheet'; l.href = href;
+      document.head.appendChild(l);
+    });
+    var sc = document.createElement('script');
+    sc.src = GO_JS; sc.async = true;
+    sc.onload = aguardarRender;
+    sc.onerror = function () {
+      loading.innerHTML = 'Não foi possível carregar a reserva online agora. '
+        + '<a href="' + waLink.href + '" target="_blank" rel="noopener">Reserve pelo WhatsApp</a>.';
+    };
+    document.body.appendChild(sc);
+  }
+
+  function aguardarRender() {
+    var t0 = Date.now();
+    var t = setInterval(function () {
+      if (paineis.querySelector('.suites-availability-go > *')) { loading.style.display = 'none'; clearInterval(t); }
+      else if (Date.now() - t0 > 20000) { clearInterval(t); }
+    }, 200);
+  }
+
+  function ativar(index) {
+    var atual = null;
+    cats.forEach(function (c) {
+      var sel = c.i === index;
+      if (sel) atual = c;
+      document.getElementById('reservaTab' + c.i).setAttribute('aria-selected', String(sel));
+      document.getElementById('reservaPainel' + c.i).classList.toggle('ativo', sel);
+    });
+    if (!atual) return;
+    nomeEl.textContent = atual.nome;
+    var msg = 'Olá! Gostaria de verificar disponibilidade na categoria ' + atual.nome + '.';
+    waLink.href = 'https://wa.me/' + CONFIG.whatsapp + '?text=' + encodeURIComponent(msg);
+  }
+
+  window.abrirReserva = function (index, origem) {
+    var existe = cats.some(function (c) { return c.i === index; });
+    // guarda quem abriu a janela (Safari não foca botões ao clicar)
+    ultimoFoco = origem || document.activeElement;
+    ativar(existe ? index : cats[0].i);
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    carregarWidget();
+    fecharBt.focus();
+  };
+
+  function fechar() {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+    if (ultimoFoco && ultimoFoco !== document.body && document.contains(ultimoFoco) && ultimoFoco.focus) ultimoFoco.focus();
+    else if (document.activeElement === fecharBt) fecharBt.blur();
+  }
+
+  fecharBt.addEventListener('click', fechar);
+  modal.addEventListener('click', function (e) { if (e.target === modal) fechar(); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && modal.classList.contains('open')) fechar();
+  });
+
+  var btnOnline = document.getElementById('reservaOnlineBtn');
+  if (btnOnline) btnOnline.addEventListener('click', function (e) { e.preventDefault(); window.abrirReserva(cats[0].i, btnOnline); });
+})();
+</script>
 </body>
 </html>

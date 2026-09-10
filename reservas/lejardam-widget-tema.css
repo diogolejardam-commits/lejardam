@@ -1,0 +1,83 @@
+/* =====================================================================
+   Tema Le Jardam para o widget ClickMotéis / Guia de Motéis
+   Só redefine as variáveis --go-* do widget (paleta e fontes do site).
+   Para voltar ao visual padrão da plataforma, basta não carregar este arquivo.
+   ===================================================================== */
+:root {
+  --go-font-family: 'Inter', system-ui, sans-serif;
+
+  --go-background: #1e3519;
+  --go-text: #f7f2e7;
+  --go-loading-background: #1e3519;
+
+  --go-titulo-font: 'Playfair Display', Georgia, serif;
+  --go-titulo-font-weight: 400;
+  --go-titulo-font-color: #fffdf7;
+  --go-titulo-barra-color: #c9a961;
+
+  --go-titulo-descricao-font: 'Inter', system-ui, sans-serif;
+  --go-titulo-descricao-font-color: #f7f2e7;
+  --go-titulo-descricao-font-subtitle-color: #e0c78f;
+
+  --go-input-font: 'Inter', system-ui, sans-serif;
+  --go-input-background: #fffdf7;
+  --go-input-label: #f7f2e7;
+  --go-input-text: #1a1a1a;
+  --go-input-icon: #2d4a24;
+  --go-input-border: #e0c78f;
+
+  --go-button-font: 'Inter', system-ui, sans-serif;
+  --go-button-background: #c9a961;
+  --go-button-text: #1e3519;
+  --go-button-icon: #1e3519;
+
+  --go-reserva-background: #fffdf7;
+  --go-reserva-title: #1e3519;
+  --go-reserva-title-icon: #2d4a24;
+  --go-reserva-text: #1a1a1a;
+  --go-reserva-subtext: #2d4a24;
+  --go-reserva-text2: #2d4a24;
+  --go-reserva-icon: #2d4a24;
+  --go-reserva-next: #2d4a24;
+
+  --go-calendario-font: 'Inter', system-ui, sans-serif;
+  --go-calendario-semana-background: #2d4a24;
+  --go-calendario-icon: #2d4a24;
+  --go-calendario-selected-background: #c9a961;
+  --go-calendario-selected-text: #1e3519;
+
+  --go-tab-background: #1e3519;
+  --go-tab-border: #c9a961;
+  --go-tab-text: #e0c78f;
+  --go-tab-icon: #e0c78f;
+  --go-tab-selected-background: #c9a961;
+  --go-tab-selected-text: #1e3519;
+  --go-tab-selected-icon: #1e3519;
+
+  --go-descricao-font: 'Inter', system-ui, sans-serif;
+  --go-descricao-font-color: #f7f2e7;
+
+  --go-modal-header-bg: #1e3519;
+  --go-modal-header-font: 'Playfair Display', Georgia, serif;
+  --go-modal-body-font: 'Inter', system-ui, sans-serif;
+  --go-modal-body-font-color: #1a1a1a;
+  --go-modal-button-font: 'Inter', system-ui, sans-serif;
+  --go-modal-button-background: #c9a961;
+  --go-modal-button-font-color: #1e3519;
+
+  --go-indisponivel-font-family: 'Inter', system-ui, sans-serif;
+  --go-indisponivel-border: 1px solid #c9a961;
+  --go-indisponivel-font-color: #f7f2e7;
+
+  --go-qtd-disponivel-background: #2d4a24;
+
+  --go-imediatas-color: #1e3519;
+
+  --go-retab-ativo-background: #1e3519;
+  --go-retab-ativo-border-color: #c9a961;
+
+  --go-nota-background: #2d4a24;
+  --go-semReserva-botao: #2d4a24;
+  --go-semReserva-table: #2d4a24;
+  --go-semReserva-table-border: #1e3519;
+}
